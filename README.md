@@ -52,7 +52,7 @@ npm run dev
 npm run tauri dev
 ```
 
-開發伺服器會在 `http://localhost:5173` 啟動（或其他可用埠）。
+開發伺服器會在 `http://localhost:1420` 啟動（或其他可用埠）。
 
 ### 建置 (Build)
 
