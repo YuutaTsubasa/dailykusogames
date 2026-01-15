@@ -5,6 +5,17 @@ import prettier from "eslint-config-prettier";
 import globals from "globals";
 
 export default [
+  {
+    ignores: [
+      ".svelte-kit/**",
+      "build/**",
+      "dist/**",
+      "node_modules/**",
+      "src-tauri/target/**",
+      "vite.config.js",
+      "svelte.config.js",
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   ...svelte.configs["flat/recommended"],
@@ -55,16 +66,5 @@ export default [
       "@typescript-eslint/no-explicit-any": "warn",
       "no-console": "warn",
     },
-  },
-  {
-    ignores: [
-      ".svelte-kit/**",
-      "build/**",
-      "dist/**",
-      "node_modules/**",
-      "src-tauri/target/**",
-      "vite.config.js",
-      "svelte.config.js",
-    ],
   },
 ];
