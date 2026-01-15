@@ -5,6 +5,7 @@ This project uses ESLint and Prettier to maintain consistent code quality and fo
 ## Tools
 
 ### ESLint
+
 - **Purpose**: Enforces code quality rules and catches potential bugs
 - **Config**: `eslint.config.js`
 - **Plugins**:
@@ -12,6 +13,7 @@ This project uses ESLint and Prettier to maintain consistent code quality and fo
   - `eslint-plugin-svelte` - Svelte-specific linting rules
 
 ### Prettier
+
 - **Purpose**: Enforces consistent code formatting
 - **Config**: `.prettierrc`
 - **Plugins**:
@@ -20,6 +22,7 @@ This project uses ESLint and Prettier to maintain consistent code quality and fo
 ## Available Scripts
 
 ### Linting
+
 ```bash
 # Check for code quality issues
 npm run lint
@@ -29,6 +32,7 @@ npm run lint:fix
 ```
 
 ### Formatting
+
 ```bash
 # Check if code is properly formatted
 npm run format:check
@@ -38,6 +42,7 @@ npm run format
 ```
 
 ### Type Checking
+
 ```bash
 # Run Svelte and TypeScript type checking
 npm run check
@@ -49,6 +54,7 @@ npm run check:watch
 ## Code Conventions
 
 ### TypeScript Rules
+
 - Use `const` for variables that don't change
 - Use TypeScript types and interfaces
 - Avoid using `any` type (warns if used)
@@ -56,6 +62,7 @@ npm run check:watch
 - Parameters starting with `_` are allowed to be unused
 
 ### General Rules
+
 - Use double quotes for strings
 - 2 spaces for indentation
 - Semicolons required
@@ -64,7 +71,9 @@ npm run check:watch
 - Trailing commas in ES5 style
 
 ### Before Committing
+
 Always run the following commands before committing:
+
 ```bash
 npm run lint:fix    # Fix linting issues
 npm run format      # Format code
@@ -79,10 +88,10 @@ You can add these checks to your CI/CD pipeline to ensure code quality:
 # Example GitHub Actions workflow
 - name: Lint
   run: npm run lint
-  
+
 - name: Format Check
   run: npm run format:check
-  
+
 - name: Type Check
   run: npm run check
 ```
@@ -90,12 +99,15 @@ You can add these checks to your CI/CD pipeline to ensure code quality:
 ## IDE Integration
 
 ### VS Code
+
 Install these extensions for automatic linting and formatting:
+
 - ESLint (`dbaeumer.vscode-eslint`)
 - Prettier (`esbenp.prettier-vscode`)
 - Svelte for VS Code (`svelte.svelte-vscode`)
 
 Add to your `.vscode/settings.json`:
+
 ```json
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
