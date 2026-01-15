@@ -1,0 +1,24 @@
+# Build outputs
+.svelte-kit
+build
+dist
+node_modules
+
+# Tauri
+src-tauri/target
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# IDE
+.vscode
+.idea
