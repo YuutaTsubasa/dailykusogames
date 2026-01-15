@@ -357,7 +357,7 @@
 
     .main-content {
       margin-left: 0;
-      padding: 1.5rem 1.5rem 1.5rem 3rem;
+      padding: 1.5rem 1.5rem 1.5rem 4rem;
     }
 
     .title {
