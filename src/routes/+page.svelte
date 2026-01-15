@@ -245,11 +245,19 @@
     font-size: 4rem;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
+    color: #fff;
     background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Fallback for browsers that don't support background-clip: text */
+  @supports not (background-clip: text) {
+    .title {
+      color: #fff;
+      background: none;
+    }
   }
 
   .subtitle {
@@ -366,13 +374,6 @@
 
     .hero-description {
       font-size: 1rem;
-    }
-  }
-
-  /* Dark theme is default, but support light theme preference */
-  @media (prefers-color-scheme: light) {
-    :global(body) {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
   }
 </style>
