@@ -12,8 +12,6 @@ export default [
       "dist/**",
       "node_modules/**",
       "src-tauri/target/**",
-      "vite.config.js",
-      "svelte.config.js",
     ],
   },
   js.configs.recommended,
