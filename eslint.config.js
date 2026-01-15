@@ -6,13 +6,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: [
-      ".svelte-kit/**",
-      "build/**",
-      "dist/**",
-      "node_modules/**",
-      "src-tauri/target/**",
-    ],
+    ignores: [".svelte-kit/**", "build/**", "dist/**", "node_modules/**", "src-tauri/target/**"],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
