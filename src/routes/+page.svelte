@@ -340,11 +340,11 @@
     margin: 1rem 0;
   }
 
-  .start-hint {
-    margin-top: 2rem !important;
-    font-size: 1.1rem !important;
+  .info-section .start-hint {
+    margin-top: 2rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    color: #ffd700 !important;
+    color: #ffd700;
     text-align: center;
   }
 
