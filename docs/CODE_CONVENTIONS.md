@@ -15,7 +15,7 @@ This project uses ESLint and Prettier to maintain consistent code quality and fo
 ### Prettier
 
 - **Purpose**: Enforces consistent code formatting
-- **Config**: `.prettierrc`
+- **Config**: `.prettierrc.js`
 - **Plugins**:
   - `prettier-plugin-svelte` - Svelte formatting support
 
