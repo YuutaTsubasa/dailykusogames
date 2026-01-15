@@ -116,7 +116,7 @@ src/
   .game-container {
     /* 主容器 */
   }
-  
+
   .game-button {
     /* 按鈕樣式 */
   }
