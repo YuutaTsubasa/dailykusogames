@@ -75,7 +75,7 @@
         每個遊戲都可能模仿或諷刺常見的廣告手遊元素，帶來獨特且有趣的遊戲體驗。
       </p>
       <p>專案使用現代 Web 技術棧（Svelte 5、TypeScript、Vite）並通過 Tauri 打包成桌面應用程式。</p>
-      <p class="start-hint">👈 點擊左側的側邊欄即可查看可用的遊戲列表</p>
+      <p class="start-hint">👈 使用左側的側邊欄或上方的按鈕即可查看可用的遊戲列表</p>
     </div>
   </main>
 </div>
