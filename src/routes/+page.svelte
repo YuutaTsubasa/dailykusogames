@@ -14,20 +14,14 @@
       <button class="close-btn" onclick={toggleSidebar} aria-label="關閉側邊欄"> ✕ </button>
     </div>
     <div class="sidebar-content">
-      <p class="no-games">目前尚無可玩的遊戲</p>
-      <p class="coming-soon">敬請期待...</p>
-      <!-- 
-      Future games will be displayed here as a list
-      Example:
       <ul class="games-list">
         <li>
           <a href="/game-001">
-            <span class="game-name">遊戲名稱</span>
-            <span class="game-desc">遊戲描述</span>
+            <span class="game-name">🎯 拉針遊戲</span>
+            <span class="game-desc">100個關卡的經典拉針解謎</span>
           </a>
         </li>
       </ul>
-      -->
     </div>
   </aside>
 
@@ -149,20 +143,6 @@
     color: rgba(255, 255, 255, 0.9);
   }
 
-  .no-games {
-    text-align: center;
-    font-size: 1rem;
-    margin: 2rem 0 0.5rem;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .coming-soon {
-    text-align: center;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  /* Future styles for games list - will be used when games are added
   .games-list {
     list-style: none;
     padding: 0;
@@ -200,7 +180,6 @@
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.7);
   }
-  */
 
   /* Sidebar Toggle Button */
   .sidebar-toggle {
