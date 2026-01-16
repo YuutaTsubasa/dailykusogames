@@ -226,27 +226,50 @@
 	{#if gameState === 'playing'}
 		<div class="game-area">
 			<svg class="game-svg" viewBox="0 0 100 100">
-				<!-- Goal area -->
-				<circle
-					cx={currentLevel?.goalX}
-					cy={currentLevel?.goalY}
-					r="8"
+				<!-- Goal area - larger visual container -->
+				<rect
+					x={currentLevel ? currentLevel.goalX - 15 : 35}
+					y={currentLevel ? currentLevel.goalY - 8 : 72}
+					width="30"
+					height="16"
 					fill="#ffd700"
 					stroke="#ffaa00"
+					stroke-width="1"
+					opacity="0.3"
+					rx="2"
+				/>
+				<rect
+					x={currentLevel ? currentLevel.goalX - 15 : 35}
+					y={currentLevel ? currentLevel.goalY + 8 : 88}
+					width="30"
+					height="4"
+					fill="#8B4513"
+					stroke="#654321"
 					stroke-width="0.5"
-					opacity="0.6"
+					opacity="0.8"
 				/>
 				<text
 					x={currentLevel?.goalX}
-					y={currentLevel?.goalY}
+					y={currentLevel ? currentLevel.goalY - 2 : 78}
 					text-anchor="middle"
 					dominant-baseline="middle"
-					font-size="6"
+					font-size="8"
 				>
 					🏆
 				</text>
+				<text
+					x={currentLevel?.goalX}
+					y={currentLevel ? currentLevel.goalY + 6 : 86}
+					text-anchor="middle"
+					dominant-baseline="middle"
+					font-size="3"
+					fill="#654321"
+					font-weight="bold"
+				>
+					寶箱
+				</text>
 
-				<!-- Pins -->
+				<!-- Pins - now horizontal -->
 				{#each pins as pin}
 					<g
 						class="pin"
@@ -258,17 +281,38 @@
 						style="cursor: pointer;"
 					>
 						{#if !pin.pulled}
+							<!-- Horizontal platform/bar -->
+							<rect
+								x={pin.x - 8}
+								y={pin.y - 1}
+								width="16"
+								height="2"
+								fill="#666"
+								stroke="#444"
+								stroke-width="0.3"
+								rx="0.5"
+							/>
+							<!-- Support pillars on sides -->
 							<line
-								x1={pin.x}
-								y1={pin.y - 5}
-								x2={pin.x}
-								y2={pin.y + 5}
-								stroke="#888"
-								stroke-width="1.5"
+								x1={pin.x - 8}
+								y1={pin.y - 1}
+								x2={pin.x - 8}
+								y2={pin.y + 3}
+								stroke="#555"
+								stroke-width="1"
 								stroke-linecap="round"
 							/>
-							<circle cx={pin.x} cy={pin.y - 5} r="2" fill="#666" />
-							<circle cx={pin.x} cy={pin.y + 5} r="2" fill="#666" />
+							<line
+								x1={pin.x + 8}
+								y1={pin.y - 1}
+								x2={pin.x + 8}
+								y2={pin.y + 3}
+								stroke="#555"
+								stroke-width="1"
+								stroke-linecap="round"
+							/>
+							<!-- Pin head for clicking -->
+							<circle cx={pin.x} cy={pin.y - 3} r="1.5" fill="#e74c3c" stroke="#c0392b" stroke-width="0.3" />
 						{/if}
 					</g>
 				{/each}

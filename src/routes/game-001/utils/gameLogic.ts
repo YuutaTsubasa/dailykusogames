@@ -41,16 +41,21 @@ export function updateBallPhysics(
 ): GameObject {
 	if (!ball.isMoving) {
 		// Check if ball should start falling (no pin below it)
+		// Pins are now horizontal bars (width ~16 units), so we check if ball is above them
 		const hasSupport = pins.some((pin) => {
 			if (pin.pulled) return false;
 			const dx = Math.abs(pin.x - ball.x);
 			const dy = pin.y - ball.y;
-			// Increased horizontal range to 25 to support balls between two pins
-			return dx < 25 && dy > 0 && dy < 20;
+			// Ball is supported if it's within the horizontal range of the pin (±10 units)
+			// and just above it (0 to 25 units above to account for various level layouts)
+			return dx < 10 && dy > 0 && dy < 25;
 		});
 
 		if (!hasSupport) {
 			ball.isMoving = true;
+			// Add slight random horizontal velocity when ball starts falling
+			// This creates more varied physics and makes the game more interesting
+			ball.vx = (Math.random() - 0.5) * 0.4;
 		}
 	}
 
@@ -62,7 +67,7 @@ export function updateBallPhysics(
 		ball.x += ball.vx;
 		ball.y += ball.vy;
 
-		// Check collisions with unpulled pins
+		// Check collisions with unpulled pins (now horizontal platforms)
 		pins.forEach((pin) => {
 			if (pin.pulled) return;
 
@@ -72,7 +77,7 @@ export function updateBallPhysics(
 			const minDistance = ball.radius + 2;
 
 			if (distance < minDistance) {
-				// Collision detected
+				// Collision detected with pin platform
 				const angle = Math.atan2(dy, dx);
 				const overlap = minDistance - distance;
 
@@ -80,13 +85,29 @@ export function updateBallPhysics(
 				ball.x += Math.cos(angle) * overlap;
 				ball.y += Math.sin(angle) * overlap;
 
-				// Bounce effect
-				const normalX = Math.cos(angle);
-				const normalY = Math.sin(angle);
-				const dotProduct = ball.vx * normalX + ball.vy * normalY;
-
-				ball.vx = (ball.vx - 2 * dotProduct * normalX) * BOUNCE_DAMPING;
-				ball.vy = (ball.vy - 2 * dotProduct * normalY) * BOUNCE_DAMPING;
+				// For horizontal pins, if ball hits from above/below, reduce vertical bounce
+				// If ball hits from side, add more horizontal velocity (sliding effect)
+				const absAngle = Math.abs(angle);
+				if (absAngle < Math.PI / 4 || absAngle > (3 * Math.PI) / 4) {
+					// Side collision - add sliding momentum
+					const normalX = Math.cos(angle);
+					const normalY = Math.sin(angle);
+					const dotProduct = ball.vx * normalX + ball.vy * normalY;
+					
+					ball.vx = (ball.vx - 2 * dotProduct * normalX) * BOUNCE_DAMPING;
+					ball.vy = (ball.vy - 2 * dotProduct * normalY) * BOUNCE_DAMPING * 0.5; // Less vertical bounce
+					
+					// Add sliding force
+					ball.vx += Math.sign(dx) * 0.2;
+				} else {
+					// Top/bottom collision - normal bounce but encourage sliding
+					const normalX = Math.cos(angle);
+					const normalY = Math.sin(angle);
+					const dotProduct = ball.vx * normalX + ball.vy * normalY;
+					
+					ball.vx = (ball.vx - 2 * dotProduct * normalX) * BOUNCE_DAMPING + Math.sign(dx) * 0.1;
+					ball.vy = (ball.vy - 2 * dotProduct * normalY) * BOUNCE_DAMPING;
+				}
 			}
 		});
 
