@@ -26,7 +26,7 @@ const BOUNCE_DAMPING = 0.6;
 const VELOCITY_THRESHOLD = 0.1;
 
 // Check if ball is in goal area
-export function isInGoal(ball: GameObject, goalX: number, goalY: number, goalRadius = 8): boolean {
+export function isInGoal(ball: GameObject, goalX: number, goalY: number, goalRadius = 12): boolean {
 	const dx = ball.x - goalX;
 	const dy = ball.y - goalY;
 	const distance = Math.sqrt(dx * dx + dy * dy);
@@ -45,7 +45,8 @@ export function updateBallPhysics(
 			if (pin.pulled) return false;
 			const dx = Math.abs(pin.x - ball.x);
 			const dy = pin.y - ball.y;
-			return dx < 10 && dy > 0 && dy < 15;
+			// Increased horizontal range to 25 to support balls between two pins
+			return dx < 25 && dy > 0 && dy < 20;
 		});
 
 		if (!hasSupport) {
