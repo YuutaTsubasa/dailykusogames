@@ -72,8 +72,14 @@
 		function gameLoop() {
 			if (gameState !== 'playing') return;
 
-			// Update all balls
-			balls = balls.map((ball) => updateBallPhysics(ball, pins));
+			// Update all balls with goal position for settling physics
+			balls = balls.map((ball) => updateBallPhysics(
+				ball, 
+				pins, 
+				undefined, 
+				currentLevel?.goalX, 
+				currentLevel?.goalY
+			));
 
 			// Check ball-to-ball collisions
 			balls = checkBallCollisions(balls);
@@ -283,36 +289,26 @@
 						{#if !pin.pulled}
 							<!-- Horizontal platform/bar -->
 							<rect
-								x={pin.x - 8}
-								y={pin.y - 1}
-								width="16"
-								height="2"
-								fill="#666"
-								stroke="#444"
-								stroke-width="0.3"
+								x={pin.x - 10}
+								y={pin.y - 1.5}
+								width="20"
+								height="3"
+								fill="#8B4513"
+								stroke="#654321"
+								stroke-width="0.5"
 								rx="0.5"
 							/>
-							<!-- Support pillars on sides -->
-							<line
-								x1={pin.x - 8}
-								y1={pin.y - 1}
-								x2={pin.x - 8}
-								y2={pin.y + 3}
-								stroke="#555"
-								stroke-width="1"
-								stroke-linecap="round"
+							<!-- Pin pull indicator (small handle in center) -->
+							<rect
+								x={pin.x - 2}
+								y={pin.y - 3}
+								width="4"
+								height="1.5"
+								fill="#FFD700"
+								stroke="#FFA500"
+								stroke-width="0.3"
+								rx="0.3"
 							/>
-							<line
-								x1={pin.x + 8}
-								y1={pin.y - 1}
-								x2={pin.x + 8}
-								y2={pin.y + 3}
-								stroke="#555"
-								stroke-width="1"
-								stroke-linecap="round"
-							/>
-							<!-- Pin head for clicking -->
-							<circle cx={pin.x} cy={pin.y - 3} r="1.5" fill="#e74c3c" stroke="#c0392b" stroke-width="0.3" />
 						{/if}
 					</g>
 				{/each}

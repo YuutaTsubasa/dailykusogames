@@ -37,25 +37,27 @@ export function isInGoal(ball: GameObject, goalX: number, goalY: number, goalRad
 export function updateBallPhysics(
 	ball: GameObject,
 	pins: { x: number; y: number; id: number; pulled: boolean }[],
-	bounds = { minX: 5, maxX: 95, minY: 5, maxY: 95 }
+	bounds = { minX: 5, maxX: 95, minY: 5, maxY: 95 },
+	goalX?: number,
+	goalY?: number
 ): GameObject {
 	if (!ball.isMoving) {
 		// Check if ball should start falling (no pin below it)
-		// Pins are now horizontal bars (width ~16 units), so we check if ball is above them
+		// Pins are now horizontal platforms (width ~20 units), so we check if ball is above them
 		const hasSupport = pins.some((pin) => {
 			if (pin.pulled) return false;
 			const dx = Math.abs(pin.x - ball.x);
 			const dy = pin.y - ball.y;
-			// Ball is supported if it's within the horizontal range of the pin (±10 units)
-			// and just above it (0 to 25 units above to account for various level layouts)
-			return dx < 10 && dy > 0 && dy < 25;
+			// Ball is supported if it's within the horizontal range of the pin (±12 units for 20-wide platform)
+			// and positioned 3-5 units above the platform (sitting on top)
+			return dx < 12 && dy > 3 && dy < 25;
 		});
 
 		if (!hasSupport) {
 			ball.isMoving = true;
 			// Add slight random horizontal velocity when ball starts falling
 			// This creates more varied physics and makes the game more interesting
-			ball.vx = (Math.random() - 0.5) * 0.4;
+			ball.vx = (Math.random() - 0.5) * 0.3;
 		}
 	}
 
@@ -127,6 +129,31 @@ export function updateBallPhysics(
 		if (ball.y + ball.radius > bounds.maxY) {
 			ball.y = bounds.maxY - ball.radius;
 			ball.vy = Math.abs(ball.vy) * -BOUNCE_DAMPING;
+		}
+
+		// Check if ball is in goal area - if so, slow it down and settle it there
+		if (goalX !== undefined && goalY !== undefined) {
+			const dx = ball.x - goalX;
+			const dy = ball.y - goalY;
+			const distanceToGoal = Math.sqrt(dx * dx + dy * dy);
+			
+			// Goal container is 30x16 (half-width=15, half-height=8)
+			if (Math.abs(dx) < 13 && Math.abs(dy) < 6) {
+				// Ball is inside goal area - apply strong damping to settle it
+				ball.vx *= 0.8;
+				ball.vy *= 0.8;
+				
+				// Stop the ball if it's settled in the goal
+				if (Math.abs(ball.vx) < 0.1 && Math.abs(ball.vy) < 0.1) {
+					ball.vx = 0;
+					ball.vy = 0;
+					ball.isMoving = false;
+					// Clamp position to goal center area
+					if (ball.y > goalY) {
+						ball.y = goalY + 3; // Settle near bottom of goal
+					}
+				}
+			}
 		}
 
 		// Stop if velocity is very low and near bottom
