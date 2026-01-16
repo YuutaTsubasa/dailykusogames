@@ -17,8 +17,12 @@ export interface GameObject extends Position, Velocity {
 	isMoving: boolean;
 }
 
+// Physics constants
+// GRAVITY: Controls how fast balls accelerate downward (higher = faster falling)
 const GRAVITY = 0.3;
+// BOUNCE_DAMPING: Reduces velocity after collision (0-1, lower = more energy loss)
 const BOUNCE_DAMPING = 0.6;
+// VELOCITY_THRESHOLD: Minimum velocity before ball is considered stopped
 const VELOCITY_THRESHOLD = 0.1;
 
 // Check if ball is in goal area
