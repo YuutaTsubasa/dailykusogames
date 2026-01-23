@@ -1,6 +1,7 @@
 <script lang="ts">
   let sidebarOpen = $state(true);
-  let marqueeText = "🎮 新遊戲即將推出！ | ⚡ 系統持續更新中 | 🎉 歡迎來到每日糞Game | 🚀 使用 Tauri + Svelte 打造";
+  let marqueeText =
+    "🎮 新遊戲即將推出！ | ⚡ 系統持續更新中 | 🎉 歡迎來到每日糞Game | 🚀 使用 Tauri + Svelte 打造";
 
   function toggleSidebar() {
     sidebarOpen = !sidebarOpen;
@@ -93,9 +94,16 @@
   :global(body) {
     margin: 0;
     padding: 0;
-    font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background-color: #0A0E1A;
-    background-image: 
+    font-family:
+      "Inter",
+      "Noto Sans TC",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      sans-serif;
+    background-color: #0a0e1a;
+    background-image:
       linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
@@ -112,9 +120,9 @@
 
   /* Marquee Announcement Bar */
   .marquee-container {
-    background: linear-gradient(90deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
-    border-top: 2px solid #00D4FF;
-    border-bottom: 2px solid #00D4FF;
+    background: linear-gradient(90deg, #0a0e1a 0%, #1a1f2e 50%, #0a0e1a 100%);
+    border-top: 2px solid #00d4ff;
+    border-bottom: 2px solid #00d4ff;
     padding: 12px 0;
     overflow: hidden;
     position: relative;
@@ -137,7 +145,7 @@
     padding: 0 4rem;
     font-size: 1rem;
     font-weight: 500;
-    color: #FFFFFF;
+    color: #ffffff;
     letter-spacing: 0.5px;
   }
 
@@ -184,7 +192,7 @@
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00D4FF;
+    color: #00d4ff;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -192,7 +200,7 @@
   .close-btn {
     background: transparent;
     border: 2px solid rgba(255, 215, 0, 0.5);
-    color: #FFD700;
+    color: #ffd700;
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.25rem 0.75rem;
@@ -203,7 +211,7 @@
 
   .close-btn:hover {
     background: rgba(255, 215, 0, 0.1);
-    border-color: #FFD700;
+    border-color: #ffd700;
     transform: rotate(90deg);
   }
 
@@ -221,7 +229,7 @@
   .coming-soon {
     text-align: center;
     font-size: 0.9rem;
-    color: #FFD700;
+    color: #ffd700;
     font-weight: 500;
   }
 
@@ -231,8 +239,8 @@
     left: 1rem;
     top: calc(52px + 1rem); /* Below marquee */
     z-index: 99;
-    background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
-    border: 2px solid #00D4FF;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+    border: 2px solid #00d4ff;
     color: #000000;
     font-size: 1.5rem;
     padding: 0.75rem 1rem;
@@ -244,7 +252,7 @@
   }
 
   .sidebar-toggle:hover {
-    background: linear-gradient(135deg, #4DE4FF 0%, #00D4FF 100%);
+    background: linear-gradient(135deg, #4de4ff 0%, #00d4ff 100%);
     box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
     transform: scale(1.05);
   }
@@ -273,7 +281,7 @@
     font-weight: 700;
     margin: 0 0 0.5rem 0;
     color: #fff;
-    background: linear-gradient(135deg, #00D4FF 0%, #4DE4FF 100%);
+    background: linear-gradient(135deg, #00d4ff 0%, #4de4ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -286,7 +294,7 @@
   /* Fallback for browsers that don't support background-clip: text */
   @supports not (background-clip: text) {
     .title {
-      color: #00D4FF;
+      color: #00d4ff;
       background: none;
     }
   }
@@ -333,13 +341,13 @@
   }
 
   .feature-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #00D4FF 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%);
     transition: left 0.5s ease;
   }
 
@@ -362,7 +370,7 @@
   .feature-card h3 {
     font-size: 1.5rem;
     margin: 0 0 0.75rem 0;
-    color: #00D4FF;
+    color: #00d4ff;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -388,19 +396,19 @@
   }
 
   .info-section::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #00D4FF 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%);
   }
 
   .info-section h2 {
     font-size: 2rem;
     margin: 0 0 1.5rem 0;
-    color: #00D4FF;
+    color: #00d4ff;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -417,7 +425,7 @@
     margin-top: 2rem;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #FFD700;
+    color: #ffd700;
     text-align: center;
     padding: 1rem;
     background: rgba(255, 215, 0, 0.1);

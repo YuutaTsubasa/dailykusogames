@@ -23,22 +23,26 @@ This project adopts an "Industrial Style" design language to create a modern, pr
 ### 主色系 (Primary Colors)
 
 #### 高亮藍色 (Bright Blue) - 強調與主要動作
+
 - **Primary Blue**: `#00D4FF` (rgb(0, 212, 255))
 - **Dark Blue**: `#0099CC` (rgb(0, 153, 204))
 - **Light Blue**: `#4DE4FF` (rgb(77, 228, 255))
 
 **使用場景**：
+
 - 主要按鈕與 CTA (Call-to-Action)
 - 關鍵標題與重點文字
 - 互動元素的 hover 狀態
 - 連結與可點擊元素
 
 #### 亮黃色 (Bright Yellow) - 警示與提示
+
 - **Primary Yellow**: `#FFD700` (rgb(255, 215, 0))
 - **Warning Yellow**: `#FFC700` (rgb(255, 199, 0))
 - **Light Yellow**: `#FFE44D` (rgb(255, 228, 77))
 
 **使用場景**：
+
 - 警告訊息與提示
 - 重要通知標籤
 - 強調文字的點綴
@@ -47,23 +51,27 @@ This project adopts an "Industrial Style" design language to create a modern, pr
 ### 中性色系 (Neutral Colors)
 
 #### 黑色與深灰 (Black & Dark Gray) - 主要背景
+
 - **Pure Black**: `#000000` (rgb(0, 0, 0))
 - **Dark Gray**: `#0A0E1A` (rgb(10, 14, 26))
 - **Medium Dark**: `#1A1F2E` (rgb(26, 31, 46))
 - **Charcoal**: `#2A2F3E` (rgb(42, 47, 62))
 
 **使用場景**：
+
 - 網站主背景
 - 側邊欄與導航區塊背景
 - 深色模式基底
 
 #### 白色與淺灰 (White & Light Gray) - 文字與區塊
+
 - **Pure White**: `#FFFFFF` (rgb(255, 255, 255))
 - **Light Gray**: `#E8E8E8` (rgb(232, 232, 232))
 - **Medium Gray**: `#9CA3AF` (rgb(156, 163, 175))
 - **Soft Gray**: `#6B7280` (rgb(107, 114, 128))
 
 **使用場景**：
+
 - 主要文字內容
 - 卡片與區塊背景
 - 分隔線與邊框
@@ -71,16 +79,19 @@ This project adopts an "Industrial Style" design language to create a modern, pr
 ### 金屬漸層 (Metallic Gradients)
 
 #### 銀色金屬 (Silver Metallic)
+
 ```css
-background: linear-gradient(135deg, #C0C0C0 0%, #808080 50%, #C0C0C0 100%);
+background: linear-gradient(135deg, #c0c0c0 0%, #808080 50%, #c0c0c0 100%);
 ```
 
 #### 藍色金屬 (Blue Metallic)
+
 ```css
-background: linear-gradient(135deg, #00D4FF 0%, #0066CC 50%, #00D4FF 100%);
+background: linear-gradient(135deg, #00d4ff 0%, #0066cc 50%, #00d4ff 100%);
 ```
 
 **使用場景**：
+
 - 按鈕背景
 - 標題文字漸層
 - 裝飾性邊框
@@ -90,12 +101,14 @@ background: linear-gradient(135deg, #00D4FF 0%, #0066CC 50%, #00D4FF 100%);
 ## 🔤 字型系統 (Typography)
 
 ### 字型家族 (Font Families)
+
 ```css
---font-primary: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
---font-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+--font-primary: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+--font-mono: "Consolas", "Monaco", "Courier New", monospace;
 ```
 
 ### 字型大小 (Font Sizes)
+
 - **Heading 1**: `3.5rem` (56px) - 主標題
 - **Heading 2**: `2.5rem` (40px) - 次標題
 - **Heading 3**: `1.75rem` (28px) - 區塊標題
@@ -105,6 +118,7 @@ background: linear-gradient(135deg, #00D4FF 0%, #0066CC 50%, #00D4FF 100%);
 - **Tiny**: `0.75rem` (12px) - 標籤與註解
 
 ### 字重 (Font Weights)
+
 - **Light**: 300
 - **Regular**: 400
 - **Medium**: 500
@@ -118,10 +132,11 @@ background: linear-gradient(135deg, #00D4FF 0%, #0066CC 50%, #00D4FF 100%);
 ### 按鈕 (Buttons)
 
 #### 主要按鈕 (Primary Button)
+
 ```css
-background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
+background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
 color: #000000;
-border: 2px solid #00D4FF;
+border: 2px solid #00d4ff;
 border-radius: 4px;
 padding: 12px 24px;
 font-weight: 600;
@@ -132,17 +147,19 @@ transition: all 0.3s ease;
 ```
 
 Hover 狀態：
+
 ```css
-background: linear-gradient(135deg, #4DE4FF 0%, #00D4FF 100%);
+background: linear-gradient(135deg, #4de4ff 0%, #00d4ff 100%);
 box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
 transform: translateY(-2px);
 ```
 
 #### 次要按鈕 (Secondary Button)
+
 ```css
 background: transparent;
-color: #00D4FF;
-border: 2px solid #00D4FF;
+color: #00d4ff;
+border: 2px solid #00d4ff;
 border-radius: 4px;
 padding: 12px 24px;
 font-weight: 600;
@@ -152,21 +169,24 @@ transition: all 0.3s ease;
 ```
 
 Hover 狀態：
+
 ```css
 background: rgba(0, 212, 255, 0.1);
-border-color: #4DE4FF;
-color: #4DE4FF;
+border-color: #4de4ff;
+color: #4de4ff;
 ```
 
 #### 警告按鈕 (Warning Button)
+
 ```css
-background: linear-gradient(135deg, #FFD700 0%, #FFC700 100%);
+background: linear-gradient(135deg, #ffd700 0%, #ffc700 100%);
 color: #000000;
-border: 2px solid #FFD700;
+border: 2px solid #ffd700;
 /* 其他屬性同主要按鈕 */
 ```
 
 ### 卡片 (Cards)
+
 ```css
 background: rgba(26, 31, 46, 0.8);
 border: 1px solid rgba(0, 212, 255, 0.3);
@@ -178,6 +198,7 @@ transition: all 0.3s ease;
 ```
 
 Hover 狀態：
+
 ```css
 border-color: rgba(0, 212, 255, 0.6);
 box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
@@ -185,6 +206,7 @@ transform: translateY(-4px);
 ```
 
 ### 分隔線 (Dividers)
+
 ```css
 /* 標準分隔線 */
 border-bottom: 1px solid rgba(156, 163, 175, 0.2);
@@ -194,23 +216,25 @@ border-bottom: 2px solid rgba(0, 212, 255, 0.5);
 
 /* 金屬分隔線 */
 height: 2px;
-background: linear-gradient(90deg, transparent 0%, #00D4FF 50%, transparent 100%);
+background: linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%);
 ```
 
 ### 輸入框 (Input Fields)
+
 ```css
 background: rgba(0, 0, 0, 0.3);
 border: 2px solid rgba(156, 163, 175, 0.3);
 border-radius: 4px;
 padding: 12px 16px;
-color: #FFFFFF;
+color: #ffffff;
 font-size: 1rem;
 transition: all 0.3s ease;
 ```
 
 Focus 狀態：
+
 ```css
-border-color: #00D4FF;
+border-color: #00d4ff;
 box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
 outline: none;
 ```
@@ -224,6 +248,7 @@ outline: none;
 用於展示重要公告、活動消息或更新資訊。
 
 #### HTML 結構
+
 ```html
 <div class="marquee-container">
   <div class="marquee-content">
@@ -234,11 +259,12 @@ outline: none;
 ```
 
 #### CSS 樣式
+
 ```css
 .marquee-container {
-  background: linear-gradient(90deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
-  border-top: 2px solid #00D4FF;
-  border-bottom: 2px solid #00D4FF;
+  background: linear-gradient(90deg, #0a0e1a 0%, #1a1f2e 50%, #0a0e1a 100%);
+  border-top: 2px solid #00d4ff;
+  border-bottom: 2px solid #00d4ff;
   padding: 12px 0;
   overflow: hidden;
   position: relative;
@@ -255,7 +281,7 @@ outline: none;
   padding: 0 4rem;
   font-size: 1rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #ffffff;
   letter-spacing: 0.5px;
 }
 
@@ -270,6 +296,7 @@ outline: none;
 ```
 
 #### 進階效果
+
 - 滑鼠 hover 時暫停動畫
 - 不同速度的跑馬燈（快速、中速、慢速）
 - 支援 RTL（右至左）滾動
@@ -279,18 +306,23 @@ outline: none;
 ## 📱 響應式設計 (Responsive Design)
 
 ### 斷點 (Breakpoints)
+
 ```css
 /* 手機 */
-@media (max-width: 640px) { }
+@media (max-width: 640px) {
+}
 
 /* 平板 */
-@media (min-width: 641px) and (max-width: 1024px) { }
+@media (min-width: 641px) and (max-width: 1024px) {
+}
 
 /* 桌面 */
-@media (min-width: 1025px) { }
+@media (min-width: 1025px) {
+}
 ```
 
 ### 響應式調整原則
+
 1. **手機裝置**：單欄布局，增大觸控目標（最小 44x44px）
 2. **平板裝置**：雙欄或三欄布局，適度縮小間距
 3. **桌面裝置**：充分利用寬螢幕，展現完整工業風格細節
@@ -300,30 +332,31 @@ outline: none;
 ## 🎯 使用範例 (Usage Examples)
 
 ### CSS 變數定義
+
 ```css
 :root {
   /* 主色 */
-  --color-primary-blue: #00D4FF;
-  --color-primary-yellow: #FFD700;
-  
+  --color-primary-blue: #00d4ff;
+  --color-primary-yellow: #ffd700;
+
   /* 中性色 */
   --color-black: #000000;
-  --color-dark: #0A0E1A;
-  --color-white: #FFFFFF;
-  --color-gray: #9CA3AF;
-  
+  --color-dark: #0a0e1a;
+  --color-white: #ffffff;
+  --color-gray: #9ca3af;
+
   /* 間距 */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
-  
+
   /* 圓角 */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
-  
+
   /* 陰影 */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
@@ -333,10 +366,11 @@ outline: none;
 ```
 
 ### 工業風格背景範例
+
 ```css
 body {
-  background-color: #0A0E1A;
-  background-image: 
+  background-color: #0a0e1a;
+  background-image:
     linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -364,12 +398,14 @@ body {
 ## 🔗 參考資源 (References)
 
 ### 工業風格設計靈感
+
 - 科技儀表板介面
 - 工業控制面板
 - 未來科幻電影 UI
 - 機械工程軟體介面
 
 ### 推薦工具
+
 - **色彩對比檢查**: [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - **漸層產生器**: [CSS Gradient](https://cssgradient.io/)
 - **調色盤工具**: [Coolors](https://coolors.co/)
