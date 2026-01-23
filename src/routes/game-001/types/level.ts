@@ -99,13 +99,18 @@ export interface MoveHistory {
 }
 
 /**
+ * 機關狀態值 (Mechanism State Value)
+ */
+export type MechanismState = boolean | Position | number;
+
+/**
  * 遊戲狀態 (Game State)
  */
 export interface GameState {
   currentLevel: number;         // 當前關卡 (Current level)
   playerPosition: Position;     // 玩家位置 (Player position)
   moveHistory: MoveHistory[];   // 移動歷史 (Move history)
-  mechanismStates: Map<string, any>; // 機關狀態 (Mechanism states)
+  mechanismStates: Map<string, MechanismState>; // 機關狀態 (Mechanism states)
   completed: boolean;           // 是否完成 (Whether completed)
   moves: number;                // 移動次數 (Number of moves)
   timeElapsed: number;          // 已耗時間（秒）(Time elapsed in seconds)

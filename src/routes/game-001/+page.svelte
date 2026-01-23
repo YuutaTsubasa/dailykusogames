@@ -193,8 +193,15 @@
 
   <!-- Instructions overlay -->
   {#if showInstructions}
-    <div class="instructions-overlay" onclick={() => showInstructions = false}>
-      <div class="instructions-content" onclick={(e) => e.stopPropagation()}>
+    <div 
+      class="instructions-overlay" 
+      role="dialog" 
+      aria-modal="true"
+      onclick={() => showInstructions = false}
+      onkeydown={(e) => e.key === 'Escape' && (showInstructions = false)}
+      tabindex="-1"
+    >
+      <div class="instructions-content" onclick={(e) => e.stopPropagation()} onkeydown={(e) => e.stopPropagation()}>
         <h2>遊戲說明</h2>
         <div class="instructions-grid">
           <div class="instruction-item">
@@ -234,8 +241,15 @@
 
   <!-- Level Select overlay -->
   {#if showLevelSelect}
-    <div class="level-select-overlay" onclick={() => showLevelSelect = false}>
-      <div class="level-select-content" onclick={(e) => e.stopPropagation()}>
+    <div 
+      class="level-select-overlay" 
+      role="dialog" 
+      aria-modal="true"
+      onclick={() => showLevelSelect = false}
+      onkeydown={(e) => e.key === 'Escape' && (showLevelSelect = false)}
+      tabindex="-1"
+    >
+      <div class="level-select-content" onclick={(e) => e.stopPropagation()} onkeydown={(e) => e.stopPropagation()}>
         <h2>選擇關卡</h2>
         <div class="levels-grid">
           {#each levels as level, index}
