@@ -98,11 +98,11 @@
 <style>
   :global(:root) {
     /* Color System */
-    --color-primary-blue: #00d4ff;
-    --color-dark-blue: #0099cc;
-    --color-light-blue: #4de4ff;
-    --color-primary-yellow: #ffd700;
-    --color-warning-yellow: #ffc700;
+    --color-primary-blue: #171bf9;
+    --color-dark-blue: #1015b8;
+    --color-light-blue: #4d50ff;
+    --color-primary-yellow: #f9fa1f;
+    --color-warning-yellow: #e0e11c;
     --color-black: #000000;
     --color-dark: #0a0e1a;
     --color-medium-dark: #1a1f2e;
@@ -129,7 +129,7 @@
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-    --shadow-blue: 0 4px 12px rgba(0, 212, 255, 0.3);
+    --shadow-blue: 0 4px 12px rgba(23, 27, 249, 0.3);
   }
 
   :global(body) {
@@ -143,13 +143,56 @@
       "Segoe UI",
       "Roboto",
       sans-serif;
-    background-color: var(--color-dark);
+    background-color: var(--color-black);
     background-image:
-      linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(23, 27, 249, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 27, 249, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
     color: var(--color-white);
     overflow-x: hidden;
+    position: relative;
+  }
+
+  :global(body::before) {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.5) 20%,
+      rgba(0, 0, 0, 0.9) 50%,
+      #000000 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  :global(body::after) {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='1000' height='1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,500 Q100,400 200,450 T400,500 T600,480 T800,520 T1000,500' stroke='rgba(23,27,249,0.15)' fill='none' stroke-width='2'/%3E%3Cpath d='M0,600 Q100,550 200,580 T400,600 T600,620 T800,580 T1000,600' stroke='rgba(23,27,249,0.12)' fill='none' stroke-width='2'/%3E%3Cpath d='M0,700 Q100,680 200,720 T400,700 T600,690 T800,710 T1000,700' stroke='rgba(23,27,249,0.1)' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    background-size: 1000px 1000px;
+    animation: scrollBackground 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  @keyframes scrollBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -1000px 0;
+    }
   }
 
   .app-container {
@@ -157,15 +200,16 @@
     flex-direction: column;
     min-height: 100vh;
     position: relative;
+    z-index: 1;
   }
 
   /* Marquee Announcement Bar */
   .marquee-container {
     background: linear-gradient(
       90deg,
-      var(--color-dark) 0%,
-      var(--color-medium-dark) 50%,
-      var(--color-dark) 100%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(10, 14, 26, 0.8) 50%,
+      rgba(0, 0, 0, 0.9) 100%
     );
     border-top: 2px solid var(--color-primary-blue);
     border-bottom: 2px solid var(--color-primary-blue);
