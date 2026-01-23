@@ -10,7 +10,12 @@
 
 <div class="app-container">
   <!-- Marquee Announcement Bar -->
-  <div class="marquee-container">
+  <div
+    class="marquee-container"
+    role="marquee"
+    aria-live="polite"
+    aria-label="Scrolling announcements"
+  >
     <div class="marquee-content">
       <span class="marquee-text">{marqueeText}</span>
       <span class="marquee-text">{marqueeText}</span>
@@ -91,6 +96,42 @@
 </div>
 
 <style>
+  :global(:root) {
+    /* Color System */
+    --color-primary-blue: #00d4ff;
+    --color-dark-blue: #0099cc;
+    --color-light-blue: #4de4ff;
+    --color-primary-yellow: #ffd700;
+    --color-warning-yellow: #ffc700;
+    --color-black: #000000;
+    --color-dark: #0a0e1a;
+    --color-medium-dark: #1a1f2e;
+    --color-charcoal: #2a2f3e;
+    --color-white: #ffffff;
+    --color-gray: #9ca3af;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Dimensions */
+    --marquee-height: 52px;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-blue: 0 4px 12px rgba(0, 212, 255, 0.3);
+  }
+
   :global(body) {
     margin: 0;
     padding: 0;
@@ -102,12 +143,12 @@
       "Segoe UI",
       "Roboto",
       sans-serif;
-    background-color: #0a0e1a;
+    background-color: var(--color-dark);
     background-image:
       linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
-    color: #fff;
+    color: var(--color-white);
     overflow-x: hidden;
   }
 
@@ -120,14 +161,19 @@
 
   /* Marquee Announcement Bar */
   .marquee-container {
-    background: linear-gradient(90deg, #0a0e1a 0%, #1a1f2e 50%, #0a0e1a 100%);
-    border-top: 2px solid #00d4ff;
-    border-bottom: 2px solid #00d4ff;
+    background: linear-gradient(
+      90deg,
+      var(--color-dark) 0%,
+      var(--color-medium-dark) 50%,
+      var(--color-dark) 100%
+    );
+    border-top: 2px solid var(--color-primary-blue);
+    border-bottom: 2px solid var(--color-primary-blue);
     padding: 12px 0;
     overflow: hidden;
     position: relative;
     z-index: 101;
-    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+    box-shadow: var(--shadow-blue);
   }
 
   .marquee-content {
@@ -140,12 +186,18 @@
     animation-play-state: paused;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-content {
+      animation: none;
+    }
+  }
+
   .marquee-text {
     display: inline-block;
     padding: 0 4rem;
     font-size: 1rem;
     font-weight: 500;
-    color: #ffffff;
+    color: var(--color-white);
     letter-spacing: 0.5px;
   }
 
@@ -164,15 +216,15 @@
     background: rgba(26, 31, 46, 0.95);
     backdrop-filter: blur(10px);
     border-right: 2px solid rgba(0, 212, 255, 0.3);
-    padding: 1.5rem;
+    padding: var(--spacing-lg);
     transition: transform 0.3s ease;
     position: fixed;
     left: 0;
-    top: 52px; /* Height of marquee */
+    top: var(--marquee-height);
     bottom: 0;
     z-index: 100;
     overflow-y: auto;
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-md);
   }
 
   .sidebar.closed {
@@ -183,8 +235,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
     border-bottom: 2px solid rgba(0, 212, 255, 0.3);
   }
 
@@ -192,7 +244,7 @@
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00d4ff;
+    color: var(--color-primary-blue);
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -200,18 +252,18 @@
   .close-btn {
     background: transparent;
     border: 2px solid rgba(255, 215, 0, 0.5);
-    color: #ffd700;
+    color: var(--color-primary-yellow);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.25rem 0.75rem;
     transition: all 0.2s;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     line-height: 1;
   }
 
   .close-btn:hover {
     background: rgba(255, 215, 0, 0.1);
-    border-color: #ffd700;
+    border-color: var(--color-primary-yellow);
     transform: rotate(90deg);
   }
 
@@ -229,7 +281,7 @@
   .coming-soon {
     text-align: center;
     font-size: 0.9rem;
-    color: #ffd700;
+    color: var(--color-primary-yellow);
     font-weight: 500;
   }
 
@@ -237,22 +289,22 @@
   .sidebar-toggle {
     position: fixed;
     left: 1rem;
-    top: calc(52px + 1rem); /* Below marquee */
+    top: calc(var(--marquee-height) + 1rem);
     z-index: 99;
-    background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
-    border: 2px solid #00d4ff;
-    color: #000000;
+    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-dark-blue) 100%);
+    border: 2px solid var(--color-primary-blue);
+    color: var(--color-black);
     font-size: 1.5rem;
     padding: 0.75rem 1rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     transition: all 0.3s ease;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
   }
 
   .sidebar-toggle:hover {
-    background: linear-gradient(135deg, #4de4ff 0%, #00d4ff 100%);
+    background: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-primary-blue) 100%);
     box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
     transform: scale(1.05);
   }
@@ -261,7 +313,7 @@
   .main-content {
     flex: 1;
     margin-left: 280px;
-    margin-top: 52px; /* Height of marquee */
+    margin-top: var(--marquee-height);
     padding: 3rem;
     transition: margin-left 0.3s ease;
   }
@@ -280,8 +332,8 @@
     font-size: 4rem;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
-    color: #fff;
-    background: linear-gradient(135deg, #00d4ff 0%, #4de4ff 100%);
+    color: var(--color-white);
+    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-light-blue) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -294,7 +346,7 @@
   /* Fallback for browsers that don't support background-clip: text */
   @supports not (background-clip: text) {
     .title {
-      color: #00d4ff;
+      color: var(--color-primary-blue);
       background: none;
     }
   }
@@ -370,7 +422,7 @@
   .feature-card h3 {
     font-size: 1.5rem;
     margin: 0 0 0.75rem 0;
-    color: #00d4ff;
+    color: var(--color-primary-blue);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -387,11 +439,11 @@
     background: rgba(26, 31, 46, 0.8);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(0, 212, 255, 0.3);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     padding: 2.5rem;
     max-width: 900px;
     margin: 0 auto;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-md);
     position: relative;
   }
 
@@ -402,13 +454,18 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-primary-blue) 50%,
+      transparent 100%
+    );
   }
 
   .info-section h2 {
     font-size: 2rem;
     margin: 0 0 1.5rem 0;
-    color: #00d4ff;
+    color: var(--color-primary-blue);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -425,11 +482,11 @@
     margin-top: 2rem;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #ffd700;
+    color: var(--color-primary-yellow);
     text-align: center;
     padding: 1rem;
     background: rgba(255, 215, 0, 0.1);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 215, 0, 0.3);
   }
 
@@ -438,17 +495,17 @@
     .sidebar {
       width: 100%;
       max-width: 280px;
-      top: 52px;
+      top: var(--marquee-height);
     }
 
     .main-content {
       margin-left: 0;
       padding: 1.5rem 1.5rem 1.5rem 1.5rem;
-      margin-top: 52px;
+      margin-top: var(--marquee-height);
     }
 
     .sidebar-toggle {
-      top: calc(52px + 1rem);
+      top: calc(var(--marquee-height) + 1rem);
     }
 
     .title {
