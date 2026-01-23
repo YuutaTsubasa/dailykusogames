@@ -207,17 +207,17 @@
   .marquee-container {
     background: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(10, 14, 26, 0.8) 50%,
-      rgba(0, 0, 0, 0.9) 100%
+      var(--color-primary-blue) 0%,
+      var(--color-dark-blue) 50%,
+      var(--color-primary-blue) 100%
     );
-    border-top: 2px solid var(--color-primary-blue);
-    border-bottom: 2px solid var(--color-primary-blue);
+    border-top: 2px solid var(--color-white);
+    border-bottom: 2px solid var(--color-white);
     padding: 12px 0;
     overflow: hidden;
     position: relative;
     z-index: 101;
-    box-shadow: var(--shadow-blue);
+    box-shadow: 0 4px 12px rgba(23, 27, 249, 0.5);
   }
 
   .marquee-content {
@@ -259,7 +259,7 @@
     width: 280px;
     background: rgba(26, 31, 46, 0.95);
     backdrop-filter: blur(10px);
-    border-right: 2px solid rgba(0, 212, 255, 0.3);
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
     padding: var(--spacing-lg);
     transition: transform 0.3s ease;
     position: fixed;
@@ -281,14 +281,14 @@
     align-items: center;
     margin-bottom: var(--spacing-lg);
     padding-bottom: var(--spacing-md);
-    border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   }
 
   .sidebar-header h2 {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-primary-blue);
+    color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -335,21 +335,21 @@
     left: 1rem;
     top: calc(var(--marquee-height) + 1rem);
     z-index: 99;
-    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-dark-blue) 100%);
-    border: 2px solid var(--color-primary-blue);
-    color: var(--color-black);
+    background: var(--color-primary-blue);
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
     font-size: 1.5rem;
     padding: 0.75rem 1rem;
     cursor: pointer;
     border-radius: var(--radius-sm);
     transition: all 0.3s ease;
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(23, 27, 249, 0.5);
   }
 
   .sidebar-toggle:hover {
-    background: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-primary-blue) 100%);
-    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
+    background: var(--color-light-blue);
+    box-shadow: 0 6px 20px rgba(23, 27, 249, 0.7);
     transform: scale(1.05);
   }
 
@@ -377,20 +377,16 @@
     font-weight: 700;
     margin: 0 0 0.5rem 0;
     color: var(--color-white);
-    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-light-blue) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-    filter: drop-shadow(0 4px 8px rgba(0, 212, 255, 0.3));
+    text-shadow: 0 0 30px rgba(23, 27, 249, 0.8);
+    filter: drop-shadow(0 4px 8px rgba(23, 27, 249, 0.5));
   }
 
   /* Fallback for browsers that don't support background-clip: text */
   @supports not (background-clip: text) {
     .title {
-      color: var(--color-primary-blue);
+      color: var(--color-white);
       background: none;
     }
   }
@@ -426,7 +422,7 @@
   .feature-card {
     background: rgba(26, 31, 46, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
@@ -443,7 +439,12 @@
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-primary-blue) 50%,
+      transparent 100%
+    );
     transition: left 0.5s ease;
   }
 
@@ -453,20 +454,20 @@
 
   .feature-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(0, 212, 255, 0.6);
-    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(23, 27, 249, 0.3);
   }
 
   .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+    filter: drop-shadow(0 0 10px rgba(23, 27, 249, 0.5));
   }
 
   .feature-card h3 {
     font-size: 1.5rem;
     margin: 0 0 0.75rem 0;
-    color: var(--color-primary-blue);
+    color: var(--color-white);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -482,7 +483,7 @@
   .info-section {
     background: rgba(26, 31, 46, 0.8);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(0, 212, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-md);
     padding: 2.5rem;
     max-width: 900px;
@@ -498,18 +499,13 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--color-primary-blue) 50%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg, transparent 0%, var(--color-white) 50%, transparent 100%);
   }
 
   .info-section h2 {
     font-size: 2rem;
     margin: 0 0 1.5rem 0;
-    color: var(--color-primary-blue);
+    color: var(--color-white);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
