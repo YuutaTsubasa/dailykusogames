@@ -334,7 +334,7 @@
     position: fixed;
     left: 1rem;
     top: calc(var(--marquee-height) + 1rem);
-    z-index: 99;
+    z-index: 102;
     background: var(--color-primary-blue);
     border: 2px solid var(--color-white);
     color: var(--color-white);
