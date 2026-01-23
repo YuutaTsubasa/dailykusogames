@@ -29,20 +29,18 @@
       <button class="close-btn" onclick={toggleSidebar} aria-label="關閉側邊欄"> ✕ </button>
     </div>
     <div class="sidebar-content">
-      <p class="no-games">目前尚無可玩的遊戲</p>
-      <p class="coming-soon">敬請期待...</p>
-      <!-- 
-      Future games will be displayed here as a list
-      Example:
       <ul class="games-list">
         <li>
           <a href="/game-001">
-            <span class="game-name">遊戲名稱</span>
-            <span class="game-desc">遊戲描述</span>
+            <span class="game-icon">🧩</span>
+            <div class="game-info">
+              <span class="game-name">解謎挑戰</span>
+              <span class="game-name-en">Puzzle Escape</span>
+              <span class="game-desc">幾何解謎遊戲，包含 10 個關卡</span>
+            </div>
           </a>
         </li>
       </ul>
-      -->
     </div>
   </aside>
 
@@ -313,6 +311,65 @@
 
   .sidebar-content {
     color: rgba(255, 255, 255, 0.9);
+  }
+
+  .games-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .games-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .games-list a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(77, 80, 255, 0.1);
+    border: 2px solid rgba(77, 80, 255, 0.3);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-white);
+    transition: all 0.3s ease;
+  }
+
+  .games-list a:hover {
+    background: rgba(77, 80, 255, 0.2);
+    border-color: var(--color-primary-blue);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(77, 80, 255, 0.3);
+  }
+
+  .game-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .game-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .game-name-en {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    font-style: italic;
+  }
+
+  .game-desc {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
   }
 
   .no-games {
