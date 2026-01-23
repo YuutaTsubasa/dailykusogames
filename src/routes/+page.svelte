@@ -95,44 +95,44 @@
   </main>
 </div>
 
-<style>
-  :global(:root) {
-    /* Color System */
-    --color-primary-blue: #171bf9;
-    --color-dark-blue: #1015b8;
-    --color-light-blue: #4d50ff;
-    --color-primary-yellow: #f9fa1f;
-    --color-warning-yellow: #e0e11c;
-    --color-black: #000000;
-    --color-dark: #0a0e1a;
-    --color-medium-dark: #1a1f2e;
-    --color-charcoal: #2a2f3e;
-    --color-white: #ffffff;
-    --color-gray: #9ca3af;
+    <style>
+      :root {
+        /* Color System */
+        --color-primary-blue: #171bf9;
+        --color-dark-blue: #1015b8;
+        --color-light-blue: #4d50ff;
+        --color-primary-yellow: #f9fa1f;
+        --color-warning-yellow: #e0e11c;
+        --color-black: #000000;
+        --color-dark: #0a0e1a;
+        --color-medium-dark: #1a1f2e;
+        --color-charcoal: #2a2f3e;
+        --color-white: #ffffff;
+        --color-gray: #9ca3af;
 
-    /* Spacing */
-    --spacing-xs: 0.25rem;
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 1.5rem;
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
 
-    /* Dimensions */
-    --marquee-height: 52px;
+        /* Dimensions */
+        --marquee-height: 52px;
 
-    /* Border Radius */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
+        /* Border Radius */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 16px;
 
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-    --shadow-blue: 0 4px 12px rgba(23, 27, 249, 0.3);
-  }
+        /* Shadows */
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --shadow-blue: 0 4px 12px rgba(23, 27, 249, 0.3);
+      }
 
-  :global(body) {
+      :global(body) {
     margin: 0;
     padding: 0;
     font-family:
