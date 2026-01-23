@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import type { LevelConfig, Position, Mechanism } from '../types/level';
-  import { levels } from '../data/levels';
+  import type { LevelConfig, Position, Mechanism } from './types/level';
+  import { levels } from './data/levels';
   import { 
     isValidMove, 
     tryPushSlider, 
@@ -9,7 +9,7 @@
     hasReachedGoal,
     isCollidingWithMechanism,
     isSamePosition
-  } from '../utils/gameLogic';
+  } from './utils/gameLogic';
   
   // Game state
   let currentLevelIndex = $state(0);
