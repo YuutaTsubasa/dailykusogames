@@ -87,6 +87,7 @@ dailykusogames/
 │   └── tauri.conf.json    # Tauri 配置
 ├── static/                # 靜態資源
 ├── docs/                  # 文件
+│   ├── DESIGN_SYSTEM.md   # 設計系統規範
 │   └── GAME_DESIGN.md     # 遊戲設計指南
 ├── package.json           # NPM 套件配置
 ├── vite.config.js         # Vite 配置
@@ -103,6 +104,30 @@ dailykusogames/
 5. **發布** - 建置並發布桌面應用程式
 
 詳細的遊戲設計流程和規範，請參閱 [遊戲設計文件](./docs/GAME_DESIGN.md)。
+
+## 🎨 設計系統 (Design System)
+
+本專案採用「**工業風格**」設計語言，以高對比度的藍色、黃色、黑色、白色為主色系，營造現代工業科技感。
+
+This project adopts an "**Industrial Style**" design language with high-contrast blue, yellow, black, and white color schemes to create a modern industrial tech aesthetic.
+
+### 設計特色 (Design Features)
+
+- **🔵 高亮藍色** - 用於主要動作、關鍵按鈕與標題強調
+- **🟡 亮黃點綴** - 警示提示與重要消息標籤
+- **⚫ 黑色背景** - 深色主題配合金屬質感
+- **⚪ 白色文字** - 高對比度確保清晰可讀
+- **✨ 動態效果** - 跑馬燈滾動展示公告與活動
+
+### 設計文件 (Design Documentation)
+
+完整的設計系統規範、色彩定義、元件樣式與使用範例，請參閱：
+
+📘 **[設計系統文件](./docs/DESIGN_SYSTEM.md)** - 包含色彩系統、字型規範、元件設計、動態效果等完整說明
+
+For complete design specifications, color definitions, component styles, and usage examples, please refer to:
+
+📘 **[Design System Documentation](./docs/DESIGN_SYSTEM.md)** - Includes color systems, typography, component design, dynamic effects, and more
 
 ## 🤝 貢獻 (Contributing)
 
