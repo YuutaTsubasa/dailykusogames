@@ -1,5 +1,6 @@
 <script lang="ts">
   let sidebarOpen = $state(true);
+  let marqueeText = "🎮 新遊戲即將推出！ | ⚡ 系統持續更新中 | 🎉 歡迎來到每日糞Game | 🚀 使用 Tauri + Svelte 打造";
 
   function toggleSidebar() {
     sidebarOpen = !sidebarOpen;
@@ -7,6 +8,14 @@
 </script>
 
 <div class="app-container">
+  <!-- Marquee Announcement Bar -->
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <span class="marquee-text">{marqueeText}</span>
+      <span class="marquee-text">{marqueeText}</span>
+    </div>
+  </div>
+
   <!-- Sidebar -->
   <aside class="sidebar" class:closed={!sidebarOpen}>
     <div class="sidebar-header">
@@ -84,32 +93,78 @@
   :global(body) {
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #0A0E1A;
+    background-image: 
+      linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
     color: #fff;
     overflow-x: hidden;
   }
 
   .app-container {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
     position: relative;
+  }
+
+  /* Marquee Announcement Bar */
+  .marquee-container {
+    background: linear-gradient(90deg, #0A0E1A 0%, #1A1F2E 50%, #0A0E1A 100%);
+    border-top: 2px solid #00D4FF;
+    border-bottom: 2px solid #00D4FF;
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 101;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-text {
+    display: inline-block;
+    padding: 0 4rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   /* Sidebar Styles */
   .sidebar {
     width: 280px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(26, 31, 46, 0.95);
     backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 2px solid rgba(0, 212, 255, 0.3);
     padding: 1.5rem;
     transition: transform 0.3s ease;
     position: fixed;
     left: 0;
-    top: 0;
+    top: 52px; /* Height of marquee */
     bottom: 0;
     z-index: 100;
     overflow-y: auto;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
   }
 
   .sidebar.closed {
@@ -122,27 +177,34 @@
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid rgba(0, 212, 255, 0.3);
   }
 
   .sidebar-header h2 {
     margin: 0;
     font-size: 1.5rem;
-    color: #fff;
+    font-weight: 700;
+    color: #00D4FF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .close-btn {
     background: transparent;
-    border: none;
-    color: #fff;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    color: #FFD700;
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 0.25rem 0.5rem;
-    transition: opacity 0.2s;
+    padding: 0.25rem 0.75rem;
+    transition: all 0.2s;
+    border-radius: 4px;
+    line-height: 1;
   }
 
   .close-btn:hover {
-    opacity: 0.7;
+    background: rgba(255, 215, 0, 0.1);
+    border-color: #FFD700;
+    transform: rotate(90deg);
   }
 
   .sidebar-content {
@@ -159,68 +221,31 @@
   .coming-soon {
     text-align: center;
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #FFD700;
+    font-weight: 500;
   }
-
-  /* Future styles for games list - will be used when games are added
-  .games-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .games-list li {
-    margin-bottom: 0.75rem;
-  }
-
-  .games-list a {
-    display: block;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    text-decoration: none;
-    color: #fff;
-    transition: all 0.2s;
-  }
-
-  .games-list a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(5px);
-  }
-
-  .game-name {
-    display: block;
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .game-desc {
-    display: block;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  */
 
   /* Sidebar Toggle Button */
   .sidebar-toggle {
     position: fixed;
     left: 1rem;
-    top: 1rem;
+    top: calc(52px + 1rem); /* Below marquee */
     z-index: 99;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: linear-gradient(135deg, #00D4FF 0%, #0099CC 100%);
+    border: 2px solid #00D4FF;
+    color: #000000;
     font-size: 1.5rem;
     padding: 0.75rem 1rem;
     cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
   }
 
   .sidebar-toggle:hover {
-    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, #4DE4FF 0%, #00D4FF 100%);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.6);
     transform: scale(1.05);
   }
 
@@ -228,6 +253,7 @@
   .main-content {
     flex: 1;
     margin-left: 280px;
+    margin-top: 52px; /* Height of marquee */
     padding: 3rem;
     transition: margin-left 0.3s ease;
   }
@@ -239,6 +265,7 @@
   .hero-section {
     text-align: center;
     margin-bottom: 4rem;
+    padding: 2rem 0;
   }
 
   .title {
@@ -246,16 +273,20 @@
     font-weight: 700;
     margin: 0 0 0.5rem 0;
     color: #fff;
-    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    background: linear-gradient(135deg, #00D4FF 0%, #4DE4FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+    filter: drop-shadow(0 4px 8px rgba(0, 212, 255, 0.3));
   }
 
   /* Fallback for browsers that don't support background-clip: text */
   @supports not (background-clip: text) {
     .title {
-      color: #fff;
+      color: #00D4FF;
       background: none;
     }
   }
@@ -265,6 +296,8 @@
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
     margin: 0 0 2rem 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
   }
 
   .hero-description {
@@ -287,50 +320,90 @@
   }
 
   .feature-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(26, 31, 46, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #00D4FF 50%, transparent 100%);
+    transition: left 0.5s ease;
+  }
+
+  .feature-card:hover::before {
+    left: 100%;
   }
 
   .feature-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
   }
 
   .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
   }
 
   .feature-card h3 {
     font-size: 1.5rem;
     margin: 0 0 0.75rem 0;
+    color: #00D4FF;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .feature-card p {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
+    line-height: 1.6;
   }
 
   .info-section {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(26, 31, 46, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 8px;
     padding: 2.5rem;
     max-width: 900px;
     margin: 0 auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+
+  .info-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #00D4FF 50%, transparent 100%);
   }
 
   .info-section h2 {
     font-size: 2rem;
     margin: 0 0 1.5rem 0;
+    color: #00D4FF;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .info-section p {
@@ -343,9 +416,13 @@
   .info-section .start-hint {
     margin-top: 2rem;
     font-size: 1.1rem;
-    font-weight: 500;
-    color: #ffd700;
+    font-weight: 600;
+    color: #FFD700;
     text-align: center;
+    padding: 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
   }
 
   /* Responsive Design */
@@ -353,11 +430,17 @@
     .sidebar {
       width: 100%;
       max-width: 280px;
+      top: 52px;
     }
 
     .main-content {
       margin-left: 0;
-      padding: 1.5rem 1.5rem 1.5rem 4rem;
+      padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+      margin-top: 52px;
+    }
+
+    .sidebar-toggle {
+      top: calc(52px + 1rem);
     }
 
     .title {
@@ -374,6 +457,11 @@
 
     .hero-description {
       font-size: 1rem;
+    }
+
+    .marquee-text {
+      font-size: 0.9rem;
+      padding: 0 2rem;
     }
   }
 </style>
