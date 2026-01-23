@@ -12,7 +12,7 @@
   <!-- Marquee Announcement Bar -->
   <div
     class="marquee-container"
-    role="marquee"
+    role="region"
     aria-live="polite"
     aria-label="Scrolling announcements"
   >
